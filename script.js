@@ -63,8 +63,8 @@ function createPipe() {
 function drawBackground() {
   ctx.drawImage(backgroundImg, 0, 0, width, height);
 }
-// Bird Draw 
 
+// Bird Draw 
 let wingFlapAngle = 0;
 let wingFlapSpeed = 0.15;
 
@@ -138,7 +138,6 @@ function drawBird() {
 
   ctx.restore();
 }
-
 
 // Draw pipes with tree wood theme (bark colors & texture shading)
 function drawPipes() {
@@ -320,6 +319,12 @@ document.addEventListener("keydown", e => {
 });
 canvas.addEventListener("click", flap);
 
+// Added touch event listener for mobile
+canvas.addEventListener("touchstart", e => {
+  e.preventDefault();
+  flap();
+}, { passive: false });
+
 restartBtn.addEventListener("click", () => {
   birdDesign.y = DESIGN_HEIGHT / 2;
   birdDesign.velocity = 0;
@@ -340,5 +345,4 @@ function onImageLoad() {
     gameLoop();
   }
 }
-backgroundImg.onload = onImageLoad;
 backgroundImg.onload = onImageLoad;
